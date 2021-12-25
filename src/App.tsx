@@ -5,13 +5,15 @@ import Field from './Components/Field';
 import Button from './Components/Button';
 import Modal from './Components/Modal';
 import Alert from './Components/Alert';
+import Select from './Components/Select';
+import ListGroup from './Components/ListGroup';
 
 function App() {
   const [showingConfirmationModal, setShowingConfirmationModal] =
     useState(false);
 
   return (
-    <main>
+    <main className='min-h-screen bg-gray-50'>
       <div className='max-w-2xl'>
         <Alert dismissable>
           Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -19,6 +21,22 @@ function App() {
       </div>
 
       <div className='space-y-3'>
+        <div className='max-w-md'>
+          <ListGroup>
+            <ListGroup.Item>1. Mecury</ListGroup.Item>
+            <ListGroup.Item>2. Venus</ListGroup.Item>
+            <ListGroup.Item>3. Earth</ListGroup.Item>
+            <ListGroup.Item>4. Mars</ListGroup.Item>
+          </ListGroup>
+        </div>
+
+        <Select>
+          <Select.Option>Mecury</Select.Option>
+          <Select.Option>Venus</Select.Option>
+          <Select.Option>Earth</Select.Option>
+          <Select.Option>Mars</Select.Option>
+        </Select>
+
         <Field htmlFor='email' label='Email' help='Enter your email'>
           <Input id='email' type='email' />
         </Field>

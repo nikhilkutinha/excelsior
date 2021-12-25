@@ -1,22 +1,25 @@
-import { useRef, useEffect, ComponentProps } from 'react';
+import { useEffect, useRef, ComponentProps } from 'react';
 import cn from 'classnames';
 
-type Props = ComponentProps<'textarea'> & {
+type SelectProps = ComponentProps<'select'> & {
   focused?: boolean;
   invalid?: boolean;
 };
 
-export default function Textarea({
+type SelectOptionProps = ComponentProps<'option'>;
+
+function Select({
+  children,
   className,
   focused,
   invalid,
   ...props
-}: Props) {
-  const textarea = useRef<HTMLTextAreaElement>(null);
+}: SelectProps) {
+  const select = useRef<HTMLSelectElement>(null);
 
   useEffect(() => {
     if (focused) {
-      textarea.current?.focus();
+      select.current?.focus();
     }
   }, [focused]);
 
@@ -31,10 +34,20 @@ export default function Textarea({
   };
 
   return (
-    <textarea
+    <select
       {...props}
-      ref={textarea}
+      ref={select}
       className={`${classes()} shadow-sm block w-full sm:text-sm border-gray-300 rounded`}
-    />
+    >
+      {children}
+    </select>
   );
 }
+
+function SelectOption({ children, ...props }: SelectOptionProps) {
+  return <option {...props}>{children}</option>;
+}
+
+Select.Option = SelectOption;
+
+export default Select;

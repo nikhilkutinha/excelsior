@@ -1,30 +1,16 @@
-import { useRef, useEffect, ChangeEventHandler } from 'react';
+import { useRef, useEffect, ComponentProps } from 'react';
 import cn from 'classnames';
 
-type Props = {
-  className?: string;
-  type?: string;
-  value?: string | number;
-  name?: string;
-  id?: string;
-  required?: boolean;
-  invalid?: boolean;
+type Props = ComponentProps<'input'> & {
   focused?: boolean;
-  autoComplete?: string;
-  handleChange?: ChangeEventHandler<HTMLInputElement>;
+  invalid?: boolean;
 };
 
 export default function Input({
   className,
-  type = 'text',
-  value,
-  name,
-  id,
-  required,
-  invalid = false,
   focused,
-  autoComplete,
-  handleChange,
+  invalid = false,
+  ...props
 }: Props) {
   const input = useRef<HTMLInputElement>(null);
 
@@ -32,7 +18,7 @@ export default function Input({
     if (focused) {
       input.current?.focus();
     }
-  }, []);
+  }, [focused]);
 
   const classes = () => {
     return cn(
@@ -46,15 +32,9 @@ export default function Input({
 
   return (
     <input
-      id={id}
+      {...props}
       ref={input}
-      type={type}
-      value={value}
-      name={name}
-      required={required}
-      autoComplete={autoComplete}
-      onChange={handleChange}
-      className={`${classes()} shadow-sm block w-full sm:text-sm border-gray-300 rounded-md`}
+      className={`${classes()} shadow-sm block w-full sm:text-sm border-gray-300 rounded`}
     />
   );
 }
