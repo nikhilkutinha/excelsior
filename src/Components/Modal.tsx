@@ -9,7 +9,7 @@ type Props = {
   header?: string;
 };
 
-export default function Example({ children, show, onClose, header }: Props) {
+export default function Modal({ children, show, onClose, header }: Props) {
   const [open, setOpen] = useState(show);
 
   useEffect(() => {

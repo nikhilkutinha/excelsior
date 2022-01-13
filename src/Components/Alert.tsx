@@ -1,12 +1,13 @@
 import { ReactNode, MouseEventHandler } from 'react';
 import { XIcon } from '@heroicons/react/outline';
 import cn from 'classnames';
+import { Color } from '../types';
 
 type Props = {
   children: ReactNode;
   dismissable?: boolean;
   onClose?: MouseEventHandler<HTMLButtonElement>;
-  color?: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info';
+  color?: Color;
 };
 
 export default function Alert({

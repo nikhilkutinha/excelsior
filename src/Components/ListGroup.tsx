@@ -7,16 +7,18 @@ type Props = {
 
 function ListGroup({ className, children }: Props) {
   return (
-    <ul className={`${className} border border-gray-300 bg-white divide-y divide-gray-300 rounded`}>
+    <ul
+      className={`${className} shadow bg-white divide-y divide-gray-200 rounded border`}
+    >
       {children}
     </ul>
   );
 }
 
-function ListGroupItem({ className, children }: Props) {
+function Item({ className, children }: Props) {
   return <li className={`${className} px-4 py-3`}>{children}</li>;
 }
 
-ListGroup.Item = ListGroupItem;
+ListGroup.Item = Item;
 
 export default ListGroup;
