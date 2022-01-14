@@ -42,12 +42,12 @@ export default function Alert({
   };
 
   return (
-    <div className={`${alertClasses()} rounded flex relative py-3`}>
+    <div className={cn(alertClasses(), 'rounded flex relative py-3')}>
       {children}
       {dismissable && (
         <button
           onClick={onClose}
-          className={`${buttonClasses()} absolute top-0 right-0 p-3`}
+          className={cn(buttonClasses(), 'absolute top-0 right-0 p-3')}
         >
           <XIcon className='w-5 h-5' />
         </button>
